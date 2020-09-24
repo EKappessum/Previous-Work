@@ -1,0 +1,53 @@
+#------------ PROJECT 3 ------------#
+
+10/28/2019. In Lecture
+--Attendees: Kyle Kappes-Sum, Connie Li, Malena Schoeni, Ethan Brenner
+--First scrum to brainstorm topics
+
+10/28/2019. Spahr Library
+--Attendees: Kyle Kappes-Sum, Connie Li, Malena Schoeni, Ethan Brenner
+--planned out file strucure, UI, and UML docs
+
+11/1/2019. In Lecture
+--Attendees: Kyle Kappes-Sum, Connie Li, Malena Schoeni, Ethan Brenner
+--discussed future additions and planned work time for remaining tasks
+
+11/2/2019. Spahr Library
+--Attendees Connie Li, Kyle-Kappes Sum, Ethan Brenner
+--Improved UI, implemented constant selector interface and formula calculation interface, and worked on documentation; planned task division for remaining testing & tasks.
+
+
+
+#------------ PROJECT 4 ------------#
+
+11/04/2019. LEEP2 Attrium 
+--Attendees: Kyle Kappes-Sum, Connie Li
+--Examined minor refactor work and assed complexity of new features.
+
+11/04/2019. Spahr Library
+--Attendees: Kyle Kappes-Sum, Connie Li, Malena Schoeni, Ethan Brenner
+--Consulted with Anna Wilson on formulas commonly used by Chemical Engineering students; started planning how to implement those formulas.
+
+11/11/2019. Spahr Library
+--Attendees: Kyle Kappes-Sum, Connie Li, Malena Schoeni, Ethan Brenner
+--Discussed implementation of formula calculations and the interface we need to implement for them, scientific notation, & necessary refactoring.
+
+11/18/2019. In Lecture
+--Attendees: Kyle Kappes-Sum, Connie Li, Malena Schoeni, Ethan Brenner
+--"Project Checkup". Presented mini-demo to Dr. Gibbons. Scrum: discussed general progress, particularly testing & what testing remains to be done.
+
+11/18/2019. Spahr Library
+--Attendees: Kyle Kappes-Sum, Connie Li, Malena Schoeni, Ethan Brenner
+--Revised & updated Gantt chart. Reviewed progress and updated division of remaining tasks.
+
+11/20/2019. In Lecture
+--Attendees: Kyle Kappes-Sum, Connie Li, Malena Schoeni, Ethan Brenner
+--Scrum: discussed progress and workshopped some JS syntax/functionality.
+
+11/20/2019. Post-lecture, impromptu
+--Attendees: Kyle Kappes-Sum, Connie Li, Ethan Brenner
+--discussed progress & priority of remaining tasks.
+
+11/25/2019
+--Attendees: Kyle Kappes-Sum, Connie Li, Ethan Brenner
+--assigned and planned out tasks over the break, worked on Documentation/Gantt

@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+        <title>Tests for unit conversions</title>
+        <script src="src/units.js"></script>
+    </head> 
+
+    <body>
+        <h2>Testing suite</h2>
+        <input type = "button" id = "energy" value = "Energy Testing" onclick  ="testAllEnergy(-1, 1, .0083230);">
+        <input type = "button" id = "pressure" value = "Pressure Testing" onclick = "testAllPressure(0.000000001234, 1024.123456, 987654);">
+        <input type = "button" id = "reset" value = "Clear Console" onclick = "console.clear();">
+        <script>
+
+            let unit = new Units();
+            function testingErgtoJ(min, max, increment)
+            {
+                console.log("Testing erg to Joule");
+                for (let i = min; i< max; i= i+increment)
+                {
+                    //console.log("erg = " + i + " joule = " + unit.ergToJ(i) + "\n");
+                    let expected = i/10000000;
+                    //console.log("Expected value = " + expected + " TEST ");
+                    let calc = unit.ergToJ(i);
+                    let flag = false;
+                    let percent = 0;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        console.log("erg = " + i + " joule = " + calc+ "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            };
+
+            function testingJtoErg(min, max, increment)
+            {
+                console.log("Testing Joule to erg");
+                for (i = min; i< max; i= i+increment)
+                {
+                    //console.log("erg = " + i + " joule = " + unit.ergToJ(i) + "\n");
+                    let expected = i*10000000;
+                    //console.log("Expected value = " + expected + " TEST ");
+                    let calc = unit.jouleToErg(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                        
+                    }
+                    if (flag)
+                    {
+                        console.log("joule = " + i + " erg = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            };
+
+            function testingJtoBtu(min, max, increment)
+            {
+                console.log("Testing joule to btu")
+                for (i = min; i< max; i= i+increment)
+                {
+                    //console.log("erg = " + i + " joule = " + unit.ergToJ(i) + "\n");
+                    expected = i *0.000947817;
+                    //console.log("Expected value = " + expected + " TEST ");
+                    let calc = unit.jouleToBtu(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                        
+                    }
+                    if (flag)
+                    {
+                        console.log("joule = " + i + " btu = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            };
+
+            function testingBtutoJ(min, max, increment)
+            {
+                console.log("Testing btu to J")
+                for (i = min; i< max; i= i+increment)
+                {
+                    //console.log("erg = " + i + " joule = " + unit.ergToJ(i) + "\n");
+                    expected = i *1055.05585262;
+                    //console.log("Expected value = " + expected + " TEST ");
+                    let calc = unit.btuToJ(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        console.log("btu = " + i + " joule = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            };
+
+            function testingJtoCal(min, max, increment)
+            {
+                console.log("Testing joule to Cal")
+                for (i = min; i< max; i= i+increment)
+                {
+                    //console.log("erg = " + i + " joule = " + unit.ergToJ(i) + "\n");
+                    expected = i *0.239006;
+                    //console.log("Expected value = " + expected + " TEST ");
+                    let calc = unit.jouleToCal(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        console.log("joule = " + i + " cal = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            };
+
+            function testingCaltoJ(min, max, increment)
+            {
+                console.log("Testing cal to joule")
+                for (i = min; i< max; i= i+increment)
+                {
+                    //console.log("erg = " + i + " joule = " + unit.ergToJ(i) + "\n");
+                    expected = i *4.184;
+                    //console.log("Expected value = " + expected + " TEST ");
+                    let calc = unit.calToJ(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        console.log("cal = " + i + " joule = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            };
+
+            function testingJtoEV(min, max, increment)
+            {
+                console.log("Testing joule to eV")
+                for (i = min; i< max; i= i+increment)
+                {
+                    //console.log("erg = " + i + " joule = " + unit.ergToJ(i) + "\n");
+                    expected = i *(6.241509* (10**18));
+                    //console.log("Expected value = " + expected + " TEST ");
+                    let calc = unit.jouleToEV(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        console.log("cal = " + i + " joule = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            };
+
+            function testingEVtoJ(min, max, increment)
+            {
+                console.log("Testing EV to J")
+                for (i = min; i< max; i= i+increment)
+                {
+                    //console.log("erg = " + i + " joule = " + unit.ergToJ(i) + "\n");
+                    expected = i *(1.60218* (10**-19));
+                    //console.log("Expected value = " + expected + " TEST ");
+                    let calc = unit.eVToJ(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        console.log("ev = " + i + " joule = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            }
+
+            function testingJouletoFtlbf(min, max, increment)
+            {
+                console.log("Testing J to ftlbF")
+                for (i = min; i< max; i= i+increment)
+                {
+                    //console.log("erg = " + i + " joule = " + unit.ergToJ(i) + "\n");
+                    expected = i *0.737562;
+                    //console.log("Expected value = " + expected + " TEST ");
+                    let calc = unit.jouleToFootPoundForce(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        console.log("j = " + i + " ftlbf = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            }
+
+            function testingFtlbfToJ(min, max, increment)
+            {
+                console.log("Testing ftlbF to J")
+                for (i = min; i< max; i= i+increment)
+                {
+                    //console.log("erg = " + i + " joule = " + unit.ergToJ(i) + "\n");
+                    expected = i *1.35582;
+                    //console.log("Expected value = " + expected + " TEST ");
+                    let calc = unit.ftlbfToJ(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                        
+                    }
+                    if (flag)
+                    {
+                        console.log("ftlbf = " + i + " joule = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            }
+
+            function testingJouleToHorsepowerHour(min, max, increment)
+            {
+                console.log("Testing j to hph")
+                for (i = min; i< max; i= i+increment)
+                {
+                    expected = i *.000000372506 ;
+                    let calc = unit.jouleToHorsepowerHour(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        console.log("j = " + i + " hph = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            }
+
+            function testinghphToJ(min, max, increment)
+            {
+                console.log("Testing hph to J")
+                for (i = min; i< max; i= i+increment)
+                {
+                    expected = i *2684519.53769 ;
+                    let calc = unit.hphToJ(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        console.log("hph = " + i + " j = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            }
+
+            function testingJtoKwh(min, max, increment)
+            {
+                console.log("Testing J to Kwh")
+                for (i = min; i< max; i= i+increment)
+                {
+                    expected = i *((2.777778)*10**-7) ;
+                    let calc = unit.jouleTokWh(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        console.log("j = " + i + " kwh = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            }
+
+            function testingKwhtoJ(min, max, increment)
+            {
+                console.log("Testing kwh to J")
+                for (i = min; i< max; i= i+increment)
+                {
+                    expected = i *((3.6)* (10**6));
+                    let calc = unit.kwhToJ(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        console.log("kwh = " + i + " j = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            }
+
+
+            function testingJtoKws(min, max, increment)
+            {
+                console.log("Testing J to Kws")
+                for (i = min; i< max; i= i+increment)
+                {
+                    expected = i *.001 ;
+                    let calc = unit.jouleTokWs(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        console.log("j = " + i + " kws = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            }
+
+            function testingKwstoJ(min, max, increment)
+            {
+                console.log("Testing kws to J")
+                for (i = min; i< max; i= i+increment)
+                {
+                    expected = i *1000;
+                    let calc = unit.kwsToJ(i);
+                    flag = false;
+                    if (calc !== expected)
+                    {
+                        if (Math.abs((calc-expected)/expected*100) <= 0.1)
+                        {
+                            flag = false
+                        }
+                        else
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        console.log("kws = " + i + " j = " + calc + "\n");
+                        console.log("Expected value = " + expected + " TEST FAILED percent error between expected value and computation was ");
+                        console.log((calc-expected)/expected*100 + "\n");
+                    }
+                }
+            }
+
+            
+            function testAllEnergy(min, max, increment)
+            {
+               // let unit = new Units();
+                
+                testingErgtoJ(min, max, increment);
+                testingJtoErg(min, max, increment);
+                testingJtoBtu(min, max, increment);
+                testingBtutoJ(min, max, increment);
+                testingJtoCal(min, max, increment);
+                testingJtoEV(min, max, increment);
+                testingEVtoJ(min, max, increment);
+                testingJouletoFtlbf(min, max, increment);
+                testingFtlbfToJ(min, max, increment);
+                testingJouleToHorsepowerHour(min, max, increment);
+                testinghphToJ(min, max, increment);
+                testingJtoKwh(min, max, increment);
+                testingKwhtoJ(min, max, increment);
+                testingJtoKws(min, max, increment);
+                testingKwstoJ(min, max, increment);
+
+
+            }
+
+            //testAll(-10000, 10000, 782.83);
+            
+
+        </script>
+
+<script>
+    let testValues = [0.000000001234, 1024.123456, 987654];
+    let expectedValues = [];
+    let tolerance = 0.0000001;
+    //expected values are taken from unitconverters.net/pressure-converter.html
+    /**
+     * calls all testing functions for pressure
+     */
+    function testAllPressure(){
+       
+        testingAtmoTokPa(0);
+        testingkPaToAtmo(1);
+        testingAtmoToPa(2);
+        testingPaToAtmo(3);
+        testingAtmoToBar(4);
+        testingBarToAtmo(5);
+        testingAtmoToPoundPerSquaredInch(6);
+        testingPoundPerSquaredInchToAtmo(7);
+        testingAtmoToFootWater(8);
+        testingFootWaterToAtmo(9);
+        testingAtmoToMercInch(10);
+        testingMercInchToAtmo(11);
+        testingAtmoToFootWater(12);
+        testingFootWaterToAtmo(13);
+        testingAtmoToMercInch(14);
+        testingMercInchToAtmo(15);
+        testingAtmoToMercMM(16);
+        testingMercMMToAtmo(17);
+        testingAtmoToKgf(18);
+        testingKgfToAtmo(19);
+        testingAtmoToMeterWater(20);
+        testingMeterWaterToAtmo(21);
+        testingAtmoToTorr(22);
+        testingTorrToAtmo(23);
+        testingAtmoToPsi(24);
+        testingPsiToAtmo(25);
+        testingAtmoToInchWater(26);
+        testingInchWaterToAtmo(27);
+        testingAtmoToDynePerCM(28);
+        testingDynePerCMToAtmo(29);
+
+
+
+    }
+    
+    /**
+     * checks unit conversions with expected values for atmo to kPa
+     * @param {num} j
+     */
+    function testingAtmoTokPa(j){
+        let passed = true;
+        expectedValues.push([0.00000012503505,103769.30918,100074041.55]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.atmoTokPa(testValues[i]);
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)) {
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("atmo to kPa: PASSED");
+        }
+    }
+    /**
+     * checks unit conversions with expected values for kPa to atmo
+     * @param {num} j
+     */
+     function testingkPaToAtmo(j){
+        let passed = true;
+        expectedValues.push([0.000000001233999999,10.107312667,9747.3871207]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.kPaToAtmo(testValues[i]);
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("kPa to atmo: PASSED");
+        }
+    }
+    /**
+     * atmo to Pa checking with expected values
+     * @param {num} j
+     */
+     function testingAtmoToPa(j){
+        let passed = true;
+        expectedValues.push([0.0001250351,103769309.18,100074041550]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.atmoToPa(testValues[i]);
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("atmo to Pa: PASSED");
+        }
+    }
+    /**
+     * atmo to Pa checking with expected values
+     * @param {num} j
+     */
+     function testingPaToAtmo(j){
+        let passed = true;
+        expectedValues.push([0.00000000000001217863311,0.0101073127,9.7473871207]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.paToAtmo(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("Pa to atmo: PASSED");
+        }
+    }
+    /**
+     * atmo to bar checking with expected values
+     * @param {num} j
+     */
+     function testingAtmoToBar(j){
+        let passed = true;
+        expectedValues.push([0.0000000012503505,1037.6930918,1000740.4155]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.atmoToBar(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("atmo to bar: PASSED");
+        }
+    }
+    /**
+     * bar to atmo checking with expected values
+     * @param {num} j
+     */
+     function testingBarToAtmo(j){
+        let passed = true;
+        expectedValues.push([0.000000001217863311,1010.7312667,974738.71207]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.barToAtmo(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("bar to atmo: PASSED");
+        }
+    }
+    /**
+     * atmo to poundPerSquareInch checking with expected values
+     * @param {num} j
+     */
+     function testingAtmoToPoundPerSquaredInch(j){
+        let passed = true;
+        expectedValues.push([0.00000001813480078,15050.465849,14514512.592]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.atmoToPoundPerSquaredInch(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("atmo to pound/squared inch: PASSED");
+        }
+    }
+    /**
+     * poundpersquaredinch to atmo checking with expected values
+     * @param {num} j
+     */
+     function testingPoundPerSquaredInchToAtmo(j){
+        let passed = true;
+        expectedValues.push([0.00000000008396871946,69.687467726,67205.86844]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.poundPerSquaredInchToAtmo(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("atmo to pound/squared inch: PASSED");
+        }
+    }
+
+    /**
+     * atmo to foot water checking with expected values
+     * @param {num} j
+     */
+     function testingAtmoToFootWater(j){
+        let passed = true;
+        expectedValues.push([0.00000004187213423,34750.595482,33513112.535]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.atmoToFootWater(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("atmo to foot water: PASSED");
+        }
+    }
+    
+    /**
+     * foot water to atmo checking with expected values
+     * @param {num} j
+     */
+     function testingFootWaterToAtmo(j){
+        let passed = true;
+        expectedValues.push([0.00000000003636681119,30.181608072,29106.828639]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.footWaterToAtmo(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("foot water to atmo: PASSED");
+        }
+    }
+
+    /**
+     * atmo to merc inch checking with expected values
+     * @param {num} j
+     */
+     function testingAtmoToMercInch(j){
+        let passed = true;
+        expectedValues.push([0.00000003692292359,30643.137858,29551923.16]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.atmoToMercInch(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("atmo to merc inch: PASSED");
+        }
+    }
+    /**
+     * merc inch to atmo checking with expected values
+     * @param {num} j
+     */
+     function testingMercInchToAtmo(j){
+        let passed = true;
+        expectedValues.push([0.00000000004124147959,34.22720147,33008.356798]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.mercInchToAtmo(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("merc inch to atmo: PASSED");
+        }
+    }
+    /**
+     * atmo to merc mm checking with expected values
+     * @param {num} j
+     */
+     function testingAtmoToMercMM(j){
+        let passed = true;
+        expectedValues.push([0.0000009378425916,778335.9774,750619114.25]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.atmoToMercMM(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("atmo to merc mm: PASSED");
+        }
+    }
+      /**
+     * merc mm to atmo checking with expected values
+     * @param {num} j
+     */
+     function testingMercMMToAtmo(j){
+        let passed = true;
+        expectedValues.push([0.000000000001623679,1.3475271394,1299.5411457]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.mercMMToAtmo(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("merc mm to atmo: PASSED");
+        }
+    }
+      /**
+     * atmo to kgf checking with expected values
+     * @param {num} j
+     */
+     function testingAtmoToKgf(j){
+        let passed = true;
+        expectedValues.push([0.000000001275002676,1058.1524698,1020471.2267]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.atmoToKgf(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("atmo to kgf/cm^2: PASSED");
+        }
+    }
+    /**
+     * atmo to kgf checking with expected values
+     * @param {num} j
+     */
+     function testingKgfToAtmo(j){
+        let passed = true;
+        expectedValues.push([0.000000001194315924,991.18877767,955892.13907]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.kgfToAtmo(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("kgf/cm^2 to atmo: PASSED");
+        }
+    }
+
+    /**
+     * atmo to meter water checking with expected values
+     * @param {num} j
+     */
+     function testingAtmoToMeterWater(j){
+        let passed = true;
+        expectedValues.push([0.0000000127504,10581.81604,10204993.234]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.atmoToMeterWater(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("atmo to meter water: PASSED");
+        }
+    }
+     /**
+     * atmo to meter water checking with expected values
+     * @param {num} j
+     */
+     function testingMeterWaterToAtmo(j){
+        let passed = true;
+        expectedValues.push([0.0000000001194283041,99.1161488,95586.582112]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.meterWaterToAtmo(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("meter water to atmo: PASSED");
+        }
+    }
+     /**
+     * atmo to torr checking with expected values
+     * @param {num} j
+     */
+     function testingAtmoToTorr(j){
+        let passed = true;
+        expectedValues.push([0.000000937839999,778333.82656,750617040]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.atmoToTorr(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("atmo to torr: PASSED");
+        }
+    }
+     /**
+     * torr to atmo checking with expected values
+     * @param {num} j
+     */
+     function testingTorrToAtmo(j){
+        let passed = true;
+        expectedValues.push([0.00000000000162368,1.3475308632,1299.5447368]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.torrToAtmo(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("torr to atmo: PASSED");
+        }
+    }
+    /**
+     * atmo to psi checking with expected values
+     * @param {num} j
+     */
+     function testingAtmoToPsi(j){
+        let passed = true;
+        expectedValues.push([0.00000001813480078,15050.465849,14514512.592]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.atmoToPsi(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("atmo to psi: PASSED");
+        }
+    }
+    /**
+     * psi to atmo checking with expected values
+     * @param {num} j
+     */
+     function testingPsiToAtmo(j){
+        let passed = true;
+        expectedValues.push([0.00000000008396871946,69.687467726,67205.86844]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.psiToAtmo(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("psi to atmo: PASSED");
+        }
+    }
+
+    /**
+     * atmo to inch water checking with expected values
+     * @param {num} j
+     */
+     function testingAtmoToInchWater(j){
+        let passed = true;
+        expectedValues.push([0.0000005024656108,417007.14579,402157350.42]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.atmoToInchWater(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("atmo to inch water: PASSED");
+        }
+    }
+    /**
+     * inch water to atmo checking with expected values
+     * @param {num} j
+     */
+     function testingInchWaterToAtmo(j){
+        let passed = true;
+        expectedValues.push([0.000000000003030567599,2.515134006,2425.5690533]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.inchWaterToAtmo(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("inch water to atmo: PASSED");
+        }
+    }
+    
+    /**
+     * atmo to dyne checking with expected values
+     * @param {num} j
+     */
+     function testingAtmoToDynePerCM(j){
+        let passed = true;
+        expectedValues.push([0.0012503505,1037693091.8,1000740415500]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.atmoToDynePerCM(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("atmo to dyne: PASSED");
+        }
+    }
+     /**
+     * dyne to atmo checking with expected values
+     * @param {num} j
+     */
+     function testingDynePerCMToAtmo(j){
+        let passed = true;
+        expectedValues.push([0.00000000000000121786,0.0010107313,0.9747387121]);
+        for(let i = 0; i<testValues.length; i++){
+            let calc = unit.dynePerCMToAtmo(testValues[i]);
+
+            if(Math.abs((calc-expectedValues[j][i])/(expectedValues[j][i]*100) >1)){
+                passed = false;
+                console.log("Expected value = " + expectedValues[j][i] + " TEST FAILED difference between expected value and computation was ");
+                console.log(calc-expectedValues[j][i] + "\n");
+            }
+        }
+        if(passed){
+            console.log("dyne to atmo: PASSED");
+        }
+    }
+
+
+        </script>
+    </body>
+
+</html>
