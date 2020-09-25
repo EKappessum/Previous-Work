@@ -27,3 +27,10 @@ Our team noticed that chemical engineering students have to use several differen
 
 **Individual Projects**
 
+*Conway's Game of Life:*
+
+This project was a small web design, that runs on javascript, which runs Conway's Game of Life, a zero player game. It follows the basic rules set out on the wikipedia page (https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life). It was a small project that I coded and tested until it was complete 15 hours later. 
+
+*Command Line Calendar:*
+
+Command Line Calendar is a small Haskell project that accepts a year and prints out a calendar for that year based on some internal math. It is another lightweight program that was completed in less than a day although this one utlizies functional programming unlike the rest of the projects listed.
